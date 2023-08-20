@@ -27,11 +27,13 @@ public:
 
 	int mPosX, mPosY;				// Position of the piece that is falling down
 	int mPiece, mRotation;			// Kind and rotation the piece that is falling down
+	color mColor;
 
 private:
 	int mScreenHeight;				// Screen height in pixels
 	int mNextPosX, mNextPosY;		// Position of the next piece
 	int mNextPiece, mNextRotation;	// Kind and rotation of the next piece
+	color mNextColor;
 
 	Board *mBoard;
 	Pieces *mPieces;
@@ -39,7 +41,7 @@ private:
 
 	int GetRand(int pA, int pB);
 	void InitGame();
-	void DrawPiece(int pX, int pY, int pPiece, int pRotation);
+	void DrawPiece(int pX, int pY, int pPiece, int pRotation, color pieceColor);
 	void DrawBoard();
 };
 
