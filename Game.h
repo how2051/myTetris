@@ -1,22 +1,3 @@
-/*****************************************************************************************
-/* File: Game.h
-/* Desc: General class for the game
-/*
-/* gametuto.com - Javier López López (javilop.com)
-/*
-/*****************************************************************************************
-/*
-/* Creative Commons - Attribution 3.0 Unported
-/* You are free:
-/*	to Share — to copy, distribute and transmit the work
-/*	to Remix — to adapt the work
-/*
-/* Under the following conditions:
-/* Attribution. You must attribute the work in the manner specified by the author or licensor 
-/* (but not in any way that suggests that they endorse you or your use of the work).
-/*
-/*****************************************************************************************/
-
 #ifndef _GAME_
 #define _GAME_
 
@@ -32,24 +13,22 @@
 #define WAIT_TIME 700			// Number of milliseconds that the piece remains before going 1 block down */ 
 
 
-// --------------------------------------------------------------------------------
-//									 Game
-// --------------------------------------------------------------------------------
 
-class Game
-{
+class Game {
 public:
+	Game(Board *pBoard, Pieces *pPieces, IO *pIO, int pScreenHeight) :
+		mScreenHeight(pScreenHeight), mBoard(pBoard), mPieces(pPieces), mIO(pIO)
+	{
+		InitGame();
+	}
 
-	Game			(Board *pBoard, Pieces *pPieces, IO *pIO, int pScreenHeight);
-
-	void DrawScene ();
-	void CreateNewPiece ();
+	void DrawScene();
+	void CreateNewPiece();
 
 	int mPosX, mPosY;				// Position of the piece that is falling down
 	int mPiece, mRotation;			// Kind and rotation the piece that is falling down
 
 private:
-
 	int mScreenHeight;				// Screen height in pixels
 	int mNextPosX, mNextPosY;		// Position of the next piece
 	int mNextPiece, mNextRotation;	// Kind and rotation of the next piece
@@ -58,10 +37,10 @@ private:
 	Pieces *mPieces;
 	IO *mIO;
 
-	int GetRand (int pA, int pB);
+	int GetRand(int pA, int pB);
 	void InitGame();
-	void DrawPiece (int pX, int pY, int pPiece, int pRotation);
-	void DrawBoard ();
+	void DrawPiece(int pX, int pY, int pPiece, int pRotation);
+	void DrawBoard();
 };
 
 #endif // _GAME_
